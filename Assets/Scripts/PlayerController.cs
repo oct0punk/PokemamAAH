@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField][Range(.1f, 1f)] float speed;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        float dist = Vector2.Distance(transform.position, Input.mousePosition);
+        if (dist > .1f)
+        {
+            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            dir.Normalize();
+            transform.position += (Vector3)dir * speed * Time.deltaTime;
+        }
     }
 }
