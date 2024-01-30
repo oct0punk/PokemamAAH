@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc431a9fb7d35434e9b87a6e3ff09b84, type: 3}
-  m_Name: Chateigneux
+  m_Name: Cat
   m_EditorClassIdentifier: 
   type: Chateigneux
-  maxPV: 10
-  fighting: {fileID: 21300000, guid: 5d809d6667e8673438be07a0d925b395, type: 3}
+  maxPV: 100
+  fighting: {fileID: 21300000, guid: b8c8b13e88236f745b65220b4d6c512e, type: 3}
   caught: {fileID: 21300000, guid: 9f7dbb00eca8897459ea7b8940b9e2ea, type: 3}
-  state: 0
-  stateAnim: []
+  animCon: {fileID: 9100000, guid: aa98dcab109b4b34c8bad5e8296f1061, type: 2}
+  stateButtons:
+  - {fileID: 3560408837157675915, guid: f1740dda9a1c7c847b64529abbd511e8, type: 3}
+  - {fileID: 8295623096333168870, guid: 18f2e169407abba45ab13c5c2a4098aa, type: 3}
+  - {fileID: 4067390693248379642, guid: 7dad5ce38c146304b8801d78880d8998, type: 3}
