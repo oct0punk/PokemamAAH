@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ActionButton : MonoBehaviour
 {
-    public int val;
     public GameObject Anim;
 
     public void Action()
@@ -14,10 +13,11 @@ public class ActionButton : MonoBehaviour
 
     IEnumerator ActionCoroutine()
     {
+        FightManager.instance.state = FightState.Action;
         GameObject go = Instantiate(Anim, FindObjectOfType<Canvas>().transform);
         Animator animator = go.GetComponent<Animator>();
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        FightManager.instance.state = FightState.Reaction;
         Destroy(go);
-        FightManager.instance.Action(val);
     }
 }

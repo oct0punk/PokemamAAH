@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState state;
+    float timer = 666.0f;
+    bool last = false;
 
     private void Awake()
     {
@@ -40,28 +42,46 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Fight(AnimalAsset animal)
+    private void Update()
     {
-        StartCoroutine(LoadAndFight(animal));
+        timer -= Time.deltaTime;
+        if(timer < 0)
+        {
+            last = true;
+            enabled = false;
+        }
     }
 
     IEnumerator LoadAndFight(AnimalAsset animal)
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            HidingManager.instance.OnStreetQuit();
+        }
         SceneManager.LoadScene(1);
         ChangeGameState(GameState.Fight);
         yield return new WaitUntil(() => SceneManager.GetSceneByBuildIndex(1).isLoaded);
         FightManager.instance.Init(animal);
     }
 
-    public void Menu()
+    public void Fight(AnimalAsset animal)
     {
-
+        enabled = false;
+        StopAllCoroutines();
+        StartCoroutine(LoadAndFight(animal));
     }
 
     public void Street()
     {
         ChangeGameState(GameState.Street);
         SceneManager.LoadScene(0);
+        enabled = !last;
+    }
+
+    public void Menu()
+    {
+        enabled = false;
+        timer = 666.0f;
     }
 }
 

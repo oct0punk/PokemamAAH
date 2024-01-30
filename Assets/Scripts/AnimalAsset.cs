@@ -6,11 +6,25 @@ using UnityEngine.UI;
 public class AnimalAsset : ScriptableObject
 {
     public string type;
-    public int maxPV;
-    public Sprite fighting;
+
+    [Header("Sprite of the animal")]
+    public Sprite id;
+    public Sprite neutral;
+    public Sprite hug;
+    public Sprite hungry;
+    public Sprite excited;
     public Sprite caught;
 
+    [Header("Sprite of the buttons")]
+    public Sprite hugIcon;
+    public Sprite eatIcon;
+    public Sprite playIcon;
+
+    [Header("Anims of the actions")]
+    public GameObject hugAnim;
+    public GameObject eatAnim;
+    public GameObject playAnim;
+
     public RuntimeAnimatorController animCon;
-    [Tooltip("Les actions possibles avec cet animal")] public Button[] stateButtons;
 
 }

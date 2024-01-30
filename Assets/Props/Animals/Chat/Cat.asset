@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: Cat
   m_EditorClassIdentifier: 
   type: Chateigneux
-  maxPV: 100
-  fighting: {fileID: 21300000, guid: b8c8b13e88236f745b65220b4d6c512e, type: 3}
-  caught: {fileID: 21300000, guid: 9f7dbb00eca8897459ea7b8940b9e2ea, type: 3}
+  id: {fileID: 21300000, guid: f59c4717eaeaeb943a894b0f8af509b7, type: 3}
+  neutral: {fileID: 21300000, guid: b8c8b13e88236f745b65220b4d6c512e, type: 3}
+  hug: {fileID: 21300000, guid: b8c8b13e88236f745b65220b4d6c512e, type: 3}
+  hungry: {fileID: 21300000, guid: b8c8b13e88236f745b65220b4d6c512e, type: 3}
+  excited: {fileID: 21300000, guid: b8c8b13e88236f745b65220b4d6c512e, type: 3}
+  caught: {fileID: 21300000, guid: a019ff9350ad0644eb41ae53171a2320, type: 3}
+  hugIcon: {fileID: 21300000, guid: 1db058228d5d36241a1c1b23a3889928, type: 3}
+  eatIcon: {fileID: 21300000, guid: 6adf7be75ae26354489961b5101be5cb, type: 3}
+  playIcon: {fileID: 21300000, guid: f8ff3f0e89b4bf74386c2569e2d272f8, type: 3}
+  hugAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
+  eatAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
+  playAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
   animCon: {fileID: 9100000, guid: aa98dcab109b4b34c8bad5e8296f1061, type: 2}
-  stateButtons:
-  - {fileID: 3560408837157675915, guid: f1740dda9a1c7c847b64529abbd511e8, type: 3}
-  - {fileID: 8295623096333168870, guid: 18f2e169407abba45ab13c5c2a4098aa, type: 3}
-  - {fileID: 4067390693248379642, guid: 7dad5ce38c146304b8801d78880d8998, type: 3}

@@ -1,22 +1,34 @@
+using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum FightState
+{
+    Standby,
+    Action,
+    Reaction,
+    Catch,
+    Escape,
+}
 
 public class FightManager : MonoBehaviour
 {
     public static FightManager instance;
-    int stateIndex = 0;
-    public int PV;
-    int maxPV;
+    public FightState state;
+    [SerializeField] Bubble bubble;
 
-    [SerializeField] private GameObject animal;
-    [SerializeField] private Transform animalStart;
-    [SerializeField] private Transform player;
-    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private Animal animal;
+    [Space]
+    [SerializeField] private Image ID;
     [SerializeField] private RectTransform actionsRect;
+    [Space]
+    [SerializeField] private Image EatIcon;
+    [SerializeField] private Image PlayIcon;
+    [SerializeField] private Image HugIcon;
+    [Space]
+    [SerializeField] private Image CatchImage;
 
-    private AnimalAsset animalAsset;
 
     private void Awake()
     {
@@ -27,69 +39,44 @@ public class FightManager : MonoBehaviour
                 Destroy(gameObject);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Escape))
-            Catch();
-    }
-
     public void Init(AnimalAsset an)
     {
-        animalAsset = an;
-        nameText.text = animalAsset.type;
-        PV = animalAsset.maxPV;
-        maxPV = PV;
+        state = FightState.Standby;
+        animal.Init(an);
+        ID.sprite = an.id;
+        ID.GetComponent<RectTransform>().pivot = an.id.pivot / (an.id.bounds.size * an.id.pixelsPerUnit);
 
-        animal.GetComponentInChildren<SpriteRenderer>().sprite = animalAsset.fighting;
-        animal.GetComponent<Animator>().runtimeAnimatorController = an.animCon;
+        HugIcon.sprite = an.hugIcon;
+        EatIcon.sprite = an.eatIcon;
+        PlayIcon.sprite = an.playIcon;
 
-        for (int i = 0; i < animalAsset.stateButtons.Length; i++)
-        {
-            ActionButton actBut = Instantiate(animalAsset.stateButtons[i], actionsRect).GetComponent<ActionButton>();
-            actBut.val = i;
-        }
+        HugIcon.GetComponent<ActionButton>().Anim = an.hugAnim;
+        EatIcon.GetComponent<ActionButton>().Anim = an.eatAnim;
+        PlayIcon.GetComponent<ActionButton>().Anim = an.playAnim;
+        CatchImage.sprite = an.caught;
+        CatchImage.transform.parent.gameObject.SetActive(false);
 
-        ToDate();
+        bubble.DisplayText("Il est trop moche !\r\nJe l'adore !\r\nViens par là");
     }
 
     public void Catch()
     {
+        state = FightState.Catch;
+        StockManager.instance.Adopt(animal.asset);
+        StartCoroutine(Gotcha());
+    }
+
+    IEnumerator Gotcha()
+    {
+        CatchImage.transform.parent.gameObject.SetActive(true);
+        yield return new WaitWhile(() => Input.GetMouseButton(0));
+        yield return new WaitUntil(() => Input.GetMouseButton(0));
         GameManager.instance.Street();
     }
 
     public void Escape()
     {
-        GameManager.instance.Street();
-    }
-
-    void ToDate()
-    {
-        stateIndex = Random.Range(0, 3);
-        animal.GetComponent<Animator>().SetInteger("State", stateIndex);
-        animal.GetComponent<Animator>().enabled = true;
-    }
-
-    public void Action(int val)
-    {
-        if (stateIndex == val)
-        {
-            AddPV(-10);
-        }
-        else
-        {
-            AddPV(20);
-        }
-        ToDate();
-    }
-
-    void AddPV(int amount)
-    {
-        PV += amount;
-        if (PV < 1)
-            Catch();
-        else if (PV > maxPV)
-            Escape();
-        else
-            animal.transform.position = Vector3.Lerp(player.position, animalStart.position, 1f * PV / maxPV);        
-    }
+        state = FightState.Escape;
+        CatchImage.gameObject.SetActive(true);
+    }    
 }
