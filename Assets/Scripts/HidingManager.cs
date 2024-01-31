@@ -10,7 +10,6 @@ public class HidingManager : MonoBehaviour
 {
     public static HidingManager instance;
 
-    bool[] presences;
     Hideout[] hides;
     Vector3 playerPos;
     float timer = 0;
@@ -31,7 +30,7 @@ public class HidingManager : MonoBehaviour
     {
         timer = UnityEngine.Random.Range(3, 10);
         if (GameManager.instance.state == GameState.Street)
-            OnLevelWasLoaded(0);
+            OnLevelWasLoaded(2);
     }
 
     private void Update()
@@ -39,38 +38,53 @@ public class HidingManager : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            timer = UnityEngine.Random.Range(3, 10);
+            timer = UnityEngine.Random.Range(0, 10);
             
             Hideout[] emptyHides = Array.FindAll(hides, h => !h.enabled);
             if (emptyHides.Length > 0)
             {
-                emptyHides[UnityEngine.Random.Range(0, emptyHides.Length - 1)].enabled = true;
+                emptyHides[UnityEngine.Random.Range(0, emptyHides.Length - 1)].SetPresence();
             }
         }
     }
 
     public void OnStreetQuit()
     {
-        for (int i = 0; i < presences.Length; i++)
-        {
-            presences[i] = hides[i].enabled;
-        }
+
     }
 
     private void OnLevelWasLoaded(int level)
     {
-        if (level == 0)
+        if (level == 2)
         {
             enabled = true;
             hides = FindObjectsOfType<Hideout>();
-            if (presences == null)
-                presences = new bool[hides.Length];
+            Debug.Log(hides.Length);
+
+            if (StockManager.instance != null)
+            {
+                if (StockManager.instance.stock.Count >= 8)
+                {
+                    GameManager.instance.Licorne();
+                    return;
+                }
+                foreach (Hideout h in hides)
+                {
+                    foreach (AnimalAsset an in h.animals)
+                    {
+                        if (!StockManager.instance.stock.Contains(an))
+                        {
+                            Debug.Log(h.name + " is active dut to " + an.type);
+                            h.SetPresence();
+                            break;
+                        }
+                    }
+                }
+            }
             else
             {
-                for (int i = 0; i < presences.Length; i++)
-                {
-                    hides[i].enabled = presences[i];
-                }
+                foreach (Hideout h in hides)
+                    h.SetPresence();
             }
 
             FindObjectOfType<PlayerController>().transform.position = playerPos;

@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,7 +56,7 @@ public class FightManager : MonoBehaviour
         CatchImage.sprite = an.caught;
         CatchImage.transform.parent.gameObject.SetActive(false);
 
-        Bubble.instance.DisplayText("Il est trop moche !\r\nJe l'adore !\r\nViens par là");
+        Bubble.instance.DisplayText(an.intro);
     }
 
     public void Catch()
@@ -70,12 +71,28 @@ public class FightManager : MonoBehaviour
         CatchImage.transform.parent.gameObject.SetActive(true);
         yield return new WaitWhile(() => Input.GetMouseButton(0));
         yield return new WaitUntil(() => Input.GetMouseButton(0));
-        GameManager.instance.Street();
+
+        if (GameManager.instance.last)
+            GameManager.instance.End();
+        else
+            GameManager.instance.Street();
     }
 
     public void Escape()
     {
-        state = FightState.Escape;
-        GameManager.instance.Street();
+        StartCoroutine(EscapeRoutine());
     }    
+
+    IEnumerator EscapeRoutine()
+    {
+        state = FightState.Escape;
+        animal.gameObject.SetActive(false);
+        Bubble.instance.DisplayText("Il s'est barré");
+        yield return new WaitWhile(() => Input.GetMouseButton(0));
+        yield return new WaitUntil(() => Input.GetMouseButton(0));
+        if (GameManager.instance.last)
+            GameManager.instance.Licorne();
+        else
+            GameManager.instance.Street();
+    }
 }

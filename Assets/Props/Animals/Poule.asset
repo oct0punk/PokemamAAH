@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc431a9fb7d35434e9b87a6e3ff09b84, type: 3}
+  m_Name: Poule
+  m_EditorClassIdentifier: 
+  type: Couacorico
+  id: {fileID: 21300000, guid: 16a1d71309561644d96f804b08160aea, type: 3}
+  neutral: {fileID: 21300000, guid: d83c2388c47d76e40947e3ab8817d51a, type: 3}
+  hug: {fileID: 21300000, guid: 3cc2c5d3ef55812498708f9f1ecc0c40, type: 3}
+  hungry: {fileID: 21300000, guid: 41ff77edfe0927247aa47d8a9568ebd2, type: 3}
+  excited: {fileID: 21300000, guid: ed0705bc5bb6ca848b02d83bce314ee1, type: 3}
+  caught: {fileID: 21300000, guid: a7e1e8434250d3b4f83b3efe5ae27b88, type: 3}
+  hugIcon: {fileID: 21300000, guid: 1db058228d5d36241a1c1b23a3889928, type: 3}
+  eatIcon: {fileID: 21300000, guid: 95197cd04b5c5a749b58216fa299c2af, type: 3}
+  playIcon: {fileID: 21300000, guid: bc89c14bd4c41064398cf589e8332131, type: 3}
+  hugAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
+  eatAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
+  playAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
+  animCon: {fileID: 9100000, guid: aa98dcab109b4b34c8bad5e8296f1061, type: 2}
+  intro: "Viens l\xE0 ptit gars, viens par ici !"

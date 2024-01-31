@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,15 +8,16 @@ public enum GameState
 {
     Street,
     Fight,
-    Menu
+    Menu,
+    Intro
 }
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState state;
-    float timer = 666.0f;
-    bool last = false;
+    public bool last = false;
+    [SerializeField] AnimalAsset licorne;
 
     private void Awake()
     {
@@ -42,25 +44,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        timer -= Time.deltaTime;
-        if(timer < 0)
-        {
-            last = true;
-            enabled = false;
-        }
-    }
-
     IEnumerator LoadAndFight(AnimalAsset animal)
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             HidingManager.instance.OnStreetQuit();
         }
         SceneManager.LoadScene(1);
-        ChangeGameState(GameState.Fight);
         yield return new WaitUntil(() => SceneManager.GetSceneByBuildIndex(1).isLoaded);
+        ChangeGameState(GameState.Fight);
         FightManager.instance.Init(animal);
     }
 
@@ -73,30 +65,44 @@ public class GameManager : MonoBehaviour
 
     public void Launch()
     {
+        enabled = false;
         StartCoroutine(Intro());
-        Street();
     }
 
     IEnumerator Intro()
     {
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 0);
-        FindObjectOfType<PlayerController>().enabled = false;
+        SceneManager.LoadScene(4);
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 4);
+        ChangeGameState(GameState.Intro);
         // Liste des textes
-        FindObjectOfType<PlayerController>().enabled = true;
+        yield return new WaitForSeconds(1.5f);
+        Street();
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 2);
+        enabled = true;
     }
 
     public void Street()
     {
         ChangeGameState(GameState.Street);
-        SceneManager.LoadScene(0);
-        enabled = !last;
+        SceneManager.LoadScene(2);
     }
 
     public void Menu()
     {
+        SceneManager.LoadScene(0);
+    }
+
+    public void End()
+    {
+        StopAllCoroutines();
+        SceneManager.LoadScene(3);
+    }
+
+    public void Licorne()
+    {
         enabled = false;
-        timer = 666.0f;
-        SceneManager.LoadScene(2);
+        last = true;
+        Fight(licorne);
     }
 }
 

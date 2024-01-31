@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Hideout : MonoBehaviour
@@ -5,11 +6,12 @@ public class Hideout : MonoBehaviour
     public AnimalAsset[] animals;
     Vector2 scale;
     float timer;
+    public string str;
 
     private void Start()
     {
         scale = transform.localScale;
-        timer = Random.Range(4, 13);
+        timer = UnityEngine.Random.Range(4, 13);
         enabled = false;
     }
 
@@ -18,7 +20,7 @@ public class Hideout : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            timer = Random.Range(4, 13);
+            timer = UnityEngine.Random.Range(4, 13);
             GetComponentInChildren<Animator>().SetTrigger("Hit");
             
         }
@@ -26,15 +28,52 @@ public class Hideout : MonoBehaviour
 
     public void SetPresence()
     {
+        // Si pas d'animaux, return;
+        //bool found = false;
+        //StockManager stock = StockManager.instance;
+        //if (stock != null)
+        //{
+        //    foreach (var a in stock.stock)
+        //    {
+        //        if (Array.Find(animals, an => an.Equals(a)) == null)
+        //        {
+        //            found = true;
+        //            break;
+        //        }
+        //    }
+        //}
         enabled = true;
     }
 
     void Rummage() {
         if (enabled)
-            GameManager.instance.Fight(animals[Random.Range(0, animals.Length - 1)]);
+        {
+            StockManager stock = StockManager.instance;
+            if (stock != null)
+            {
+                bool found = false;
+                foreach (var a in animals)
+                {
+
+                    if (!stock.stock.Contains(a))
+                    {
+                        GameManager.instance.Fight(a);
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    HidingManager.instance.DisplayText("Si ça marche pas, c'est que ça bug");
+                }
+            }
+            else
+                GameManager.instance.Fight(animals[UnityEngine.Random.Range(0, animals.Length - 1)]);
+        }
         else
         {
-            HidingManager.instance.DisplayText("Oh non, il n'y a rien ici... BOUHOUHOUHOUH");
+            HidingManager.instance.DisplayText(str);
         }
     }
 

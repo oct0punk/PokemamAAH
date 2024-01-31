@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc431a9fb7d35434e9b87a6e3ff09b84, type: 3}
+  m_Name: Chien
+  m_EditorClassIdentifier: 
+  type: Clebarjo
+  id: {fileID: 21300000, guid: 6ccd452eab961384698ff3b48276847c, type: 3}
+  neutral: {fileID: 21300000, guid: 8588d46771a5e0f4c9b76885a9f0d7ea, type: 3}
+  hug: {fileID: 21300000, guid: d5acdd2569cb7ba4481bfc96b3e0f054, type: 3}
+  hungry: {fileID: 21300000, guid: 16a433991a9f5b24087c90176518b135, type: 3}
+  excited: {fileID: 21300000, guid: e0882a57839f6a140bbc89355564cd42, type: 3}
+  caught: {fileID: 21300000, guid: 691425b65f7816048af2e3b7e5bd1b91, type: 3}
+  hugIcon: {fileID: 21300000, guid: 1db058228d5d36241a1c1b23a3889928, type: 3}
+  eatIcon: {fileID: 21300000, guid: 49bd04001a846af4580ddd6ab89d01b9, type: 3}
+  playIcon: {fileID: 21300000, guid: c9fb352746035114ba17cb1cf0f2566b, type: 3}
+  hugAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
+  eatAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
+  playAnim: {fileID: 7762957619309842775, guid: 1212b705d9950e14aa666f57b2af3782, type: 3}
+  animCon: {fileID: 9100000, guid: aa98dcab109b4b34c8bad5e8296f1061, type: 2}
+  intro: Quiii c'est qui veut des gratouilles ?

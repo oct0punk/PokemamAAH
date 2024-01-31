@@ -1,6 +1,4 @@
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New animal", menuName = "Animal")]
 public class AnimalAsset : ScriptableObject
@@ -24,7 +22,7 @@ public class AnimalAsset : ScriptableObject
     public GameObject hugAnim;
     public GameObject eatAnim;
     public GameObject playAnim;
-
     public RuntimeAnimatorController animCon;
-
+    [Space]
+    public string intro;
 }
