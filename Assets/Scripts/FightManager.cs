@@ -16,7 +16,6 @@ public class FightManager : MonoBehaviour
 {
     public static FightManager instance;
     public FightState state;
-    [SerializeField] Bubble bubble;
 
     [SerializeField] private Animal animal;
     [Space]
@@ -56,7 +55,7 @@ public class FightManager : MonoBehaviour
         CatchImage.sprite = an.caught;
         CatchImage.transform.parent.gameObject.SetActive(false);
 
-        bubble.DisplayText("Il est trop moche !\r\nJe l'adore !\r\nViens par là");
+        Bubble.instance.DisplayText("Il est trop moche !\r\nJe l'adore !\r\nViens par là");
     }
 
     public void Catch()
@@ -77,6 +76,6 @@ public class FightManager : MonoBehaviour
     public void Escape()
     {
         state = FightState.Escape;
-        CatchImage.gameObject.SetActive(true);
+        GameManager.instance.Street();
     }    
 }

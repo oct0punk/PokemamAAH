@@ -71,6 +71,20 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadAndFight(animal));
     }
 
+    public void Launch()
+    {
+        StartCoroutine(Intro());
+        Street();
+    }
+
+    IEnumerator Intro()
+    {
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 0);
+        FindObjectOfType<PlayerController>().enabled = false;
+        // Liste des textes
+        FindObjectOfType<PlayerController>().enabled = true;
+    }
+
     public void Street()
     {
         ChangeGameState(GameState.Street);
@@ -82,6 +96,7 @@ public class GameManager : MonoBehaviour
     {
         enabled = false;
         timer = 666.0f;
+        SceneManager.LoadScene(2);
     }
 }
 

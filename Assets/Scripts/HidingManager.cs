@@ -9,7 +9,6 @@ using UnityEngine;
 public class HidingManager : MonoBehaviour
 {
     public static HidingManager instance;
-    [SerializeField] Bubble bubble;
 
     bool[] presences;
     Hideout[] hides;
@@ -19,7 +18,10 @@ public class HidingManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(instance);
+        }
         else
             if (instance != this)
                 Destroy(gameObject);
@@ -81,6 +83,6 @@ public class HidingManager : MonoBehaviour
 
     public void DisplayText(string text)
     {
-        bubble.DisplayText(text);
+        Bubble.instance.DisplayText(text);
     }
 }
