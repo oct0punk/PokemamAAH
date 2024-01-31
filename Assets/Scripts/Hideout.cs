@@ -65,7 +65,7 @@ public class Hideout : MonoBehaviour
 
                 if (!found)
                 {
-                    HidingManager.instance.DisplayText("Si ça marche pas, c'est que ça bug");
+                    GameManager.instance.Licorne();
                 }
             }
             else

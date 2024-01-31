@@ -46,6 +46,7 @@ public class EndScript : MonoBehaviour
     public void DownloadCertificat()
     {
         StartCoroutine(TakeSnapshot());
+        AudioManager.instance.Play("tampon");
     }
 
     WaitForEndOfFrame frameEnd = new WaitForEndOfFrame();

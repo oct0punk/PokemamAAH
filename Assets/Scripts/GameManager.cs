@@ -61,41 +61,41 @@ public class GameManager : MonoBehaviour
         enabled = false;
         StopAllCoroutines();
         StartCoroutine(LoadAndFight(animal));
+
+        AudioManager.instance.Play("fightThem");
+        AudioManager.instance.Stop("villageThemfightThem");
     }
 
     public void Launch()
     {
         enabled = false;
-        StartCoroutine(Intro());
-    }
 
-    IEnumerator Intro()
-    {
         SceneManager.LoadScene(4);
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 4);
         ChangeGameState(GameState.Intro);
-        // Liste des textes
-        yield return new WaitForSeconds(1.5f);
-        Street();
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 2);
-        enabled = true;
     }
 
     public void Street()
     {
         ChangeGameState(GameState.Street);
+        AudioManager.instance.Play("villageThem");
+        AudioManager.instance.Stop("fightThem");
         SceneManager.LoadScene(2);
     }
 
     public void Menu()
     {
         SceneManager.LoadScene(0);
+        AudioManager.instance.Play("villageThem");
+        AudioManager.instance.Stop("fightThem");
     }
 
     public void End()
     {
         StopAllCoroutines();
         SceneManager.LoadScene(3);
+        AudioManager.instance.Stop("villageThem");
+        AudioManager.instance.Stop("fightThem");
+        AudioManager.instance.Play("EndThem");
     }
 
     public void Licorne()

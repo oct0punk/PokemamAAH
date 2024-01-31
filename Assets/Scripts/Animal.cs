@@ -57,7 +57,11 @@ public class Animal : MonoBehaviour
         PV += amount;
         targetPos = Vector3.Lerp(player.position, start.position, PV / 100.0f);
         if (PV <= 0)
+        {
             FightManager.instance.Catch();
+            AudioManager.instance.Play(asset.name);
+
+        }
         else if (PV > 100)
             FightManager.instance.Escape();
         

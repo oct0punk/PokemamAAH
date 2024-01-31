@@ -4,6 +4,7 @@ using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Intro : MonoBehaviour
 {
@@ -23,10 +24,9 @@ public class Intro : MonoBehaviour
         {
             txt += c;
             text.text = txt;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
-            yield return new WaitForSeconds(1);
-        yield return new WaitUntil(() => next);
+        yield return new WaitUntil(() => Input.GetMouseButton(0));
         GameManager.instance.Street();
     }
 

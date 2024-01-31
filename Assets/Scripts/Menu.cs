@@ -10,15 +10,18 @@ public class Menu : MonoBehaviour
     public void Play()
     {
         GameManager.instance.Launch();
+        AudioManager.instance.Play("button");
     }
 
     public void Quit()
     {
+        AudioManager.instance.Play("button");
         Application.Quit();
     }
 
     public void Credits()
     {
+        AudioManager.instance.Play("button");
         menu.SetActive(false);
         credits.SetActive(true);
     }

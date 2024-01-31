@@ -83,8 +83,7 @@ public class HidingManager : MonoBehaviour
             }
             else
             {
-                foreach (Hideout h in hides)
-                    h.SetPresence();
+                GameManager.instance.Licorne();
             }
 
             FindObjectOfType<PlayerController>().transform.position = playerPos;

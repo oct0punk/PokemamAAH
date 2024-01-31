@@ -24,5 +24,5 @@ public class AnimalAsset : ScriptableObject
     public GameObject playAnim;
     public RuntimeAnimatorController animCon;
     [Space]
-    public string intro;
+    public string intro;    
 }

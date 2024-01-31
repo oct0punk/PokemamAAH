@@ -57,10 +57,12 @@ public class FightManager : MonoBehaviour
         CatchImage.transform.parent.gameObject.SetActive(false);
 
         Bubble.instance.DisplayText(an.intro);
+        AudioManager.instance.Play(an.name);
     }
 
     public void Catch()
     {
+        AudioManager.instance.Play("gotcha");
         state = FightState.Catch;
         StockManager.instance.Adopt(animal.asset);
         StartCoroutine(Gotcha());
@@ -80,6 +82,7 @@ public class FightManager : MonoBehaviour
 
     public void Escape()
     {
+        AudioManager.instance.Play("fuite");
         StartCoroutine(EscapeRoutine());
     }    
 
