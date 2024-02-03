@@ -94,7 +94,7 @@ public class FightManager : MonoBehaviour
         yield return new WaitWhile(() => Input.GetMouseButton(0));
         yield return new WaitUntil(() => Input.GetMouseButton(0));
         if (GameManager.instance.last)
-            GameManager.instance.Licorne();
+            GameManager.instance.End();
         else
             GameManager.instance.Street();
     }

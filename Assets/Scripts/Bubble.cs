@@ -8,6 +8,7 @@ public class Bubble : MonoBehaviour
 {
     public static Bubble instance;
     public TextMeshProUGUI bubbleText;
+    Coroutine current;
 
     private void Awake()
     {
@@ -28,7 +29,11 @@ public class Bubble : MonoBehaviour
     public void DisplayText(string text)
     {
         Activate();
-        StartCoroutine(PrintText(text));
+        if (current != null)
+        {
+            StopCoroutine(current);
+        }
+        current = StartCoroutine(PrintText(text));
     }
 
     IEnumerator PrintText(string text)

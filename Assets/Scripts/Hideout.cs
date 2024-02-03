@@ -1,18 +1,18 @@
-using System;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Hideout : MonoBehaviour
 {
-    public AnimalAsset[] animals;
-    Vector2 scale;
-    float timer;
+    public List<AnimalAsset> animals;
     public string str;
+
+    float timer;
+
 
     private void Start()
     {
-        scale = transform.localScale;
-        timer = UnityEngine.Random.Range(4, 13);
-        enabled = false;
+        timer = Random.Range(4, 13);
     }
 
     private void Update()
@@ -20,29 +20,26 @@ public class Hideout : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            timer = UnityEngine.Random.Range(4, 13);
+            timer = Random.Range(4, 13);
             GetComponentInChildren<Animator>().SetTrigger("Hit");
-            
+            //AudioManager.instance.Play(gameObject.name);
         }
     }
 
-    public void SetPresence()
+    
+    public void RemoveAnimal(AnimalAsset asset)
     {
-        // Si pas d'animaux, return;
-        //bool found = false;
-        //StockManager stock = StockManager.instance;
-        //if (stock != null)
-        //{
-        //    foreach (var a in stock.stock)
-        //    {
-        //        if (Array.Find(animals, an => an.Equals(a)) == null)
-        //        {
-        //            found = true;
-        //            break;
-        //        }
-        //    }
-        //}
-        enabled = true;
+        if (enabled)
+        {
+            if (animals.FindIndex(a => asset) != -1)
+            {
+                animals.Remove(asset);
+                if (animals.Count == 0)
+                {
+                    enabled = false;
+                }
+            }
+        }
     }
 
     void Rummage() {
@@ -51,25 +48,27 @@ public class Hideout : MonoBehaviour
             StockManager stock = StockManager.instance;
             if (stock != null)
             {
-                bool found = false;
+                List<AnimalAsset> list = new List<AnimalAsset>();
                 foreach (var a in animals)
                 {
 
-                    if (!stock.stock.Contains(a))
+                    if (!stock.stock.ContainsKey(a))
                     {
                         GameManager.instance.Fight(a);
-                        found = true;
+                        list.Add(a);
                         break;
                     }
                 }
 
-                if (!found)
+                if (list.Count == 0)
                 {
-                    GameManager.instance.Licorne();
+                    Debug.LogError("Error while looking for animals");
+                    HidingManager.instance.DisplayText(str);
+                    enabled = false;
                 }
             }
             else
-                GameManager.instance.Fight(animals[UnityEngine.Random.Range(0, animals.Length - 1)]);
+                GameManager.instance.Fight(animals[Random.Range(0, animals.Count - 1)]);
         }
         else
         {
@@ -84,11 +83,11 @@ public class Hideout : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        transform.localScale = scale * Vector3.one * 1.1f;
+        transform.localScale = Vector3.one * 1.1f;
     }
 
     private void OnMouseExit()
     {
-        transform.localScale = scale * Vector3.one;
+        transform.localScale = Vector3.one;
     }
 }

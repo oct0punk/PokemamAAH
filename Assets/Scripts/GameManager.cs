@@ -46,10 +46,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadAndFight(AnimalAsset animal)
     {
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            HidingManager.instance.OnStreetQuit();
-        }
         SceneManager.LoadScene(1);
         yield return new WaitUntil(() => SceneManager.GetSceneByBuildIndex(1).isLoaded);
         ChangeGameState(GameState.Fight);
@@ -61,6 +57,7 @@ public class GameManager : MonoBehaviour
         enabled = false;
         StopAllCoroutines();
         StartCoroutine(LoadAndFight(animal));
+        StockManager.instance.AddAnimal(animal);
 
         AudioManager.instance.Play("fightThem");
         AudioManager.instance.Stop("villageThemfightThem");
@@ -69,9 +66,12 @@ public class GameManager : MonoBehaviour
     public void Launch()
     {
         enabled = false;
+        last = false;
 
         SceneManager.LoadScene(4);
         ChangeGameState(GameState.Intro);
+        if (StockManager.instance != null)
+            StockManager.instance.stock.Clear();
     }
 
     public void Street()

@@ -10554,7 +10554,7 @@ GameObject:
   - component: {fileID: 786047625}
   - component: {fileID: 786047624}
   m_Layer: 0
-  m_Name: IMG_5230
+  m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10600,7 +10600,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: eb467300c291a0e46bd773ff5511aca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10699,7 +10699,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b3513d3f1a2600e4aaad2ccae495c02f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15677,7 +15677,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d45b27c79d9122846bd632b839224861, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -20889,8 +20889,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.65519714, y: 7.8623047}
+  m_SizeDelta: {x: -30.1385, y: -31.449}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594059472
 MonoBehaviour:
@@ -20914,15 +20914,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Il est trop moche !\nJe l'adore !\nViens par l\xE0"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ef45e7be679a23b4490834583109f802, type: 2}
-  m_sharedMaterial: {fileID: -6188728237493175943, guid: ef45e7be679a23b4490834583109f802, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 65d15fb08236b6e469773ecd0f3b46eb, type: 2}
+  m_sharedMaterial: {fileID: 960158120805769781, guid: 65d15fb08236b6e469773ecd0f3b46eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -20939,15 +20939,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

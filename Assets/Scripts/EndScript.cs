@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,9 +13,20 @@ public class EndScript : MonoBehaviour
     [SerializeField] GameObject Illu;
     [SerializeField] GameObject Certificat;
     [SerializeField] GameObject tampon;
-    [SerializeField] TextMeshProUGUI name;
+    [SerializeField] new TextMeshProUGUI name;
     [Space]
     [SerializeField] Image photo;
+    [SerializeField] Sprite rabbitAltern;
+    [Header("Button")]
+    [SerializeField] Button Cat;
+    [SerializeField] Button Dog;
+    [SerializeField] Button Pigeon;
+    [SerializeField] Button Poule;
+    [SerializeField] Button Rabbit;
+    [SerializeField] Button Rat;
+    [SerializeField] Button Cow;
+    [SerializeField] Button Licorne;
+
 
     private void Awake()
     {
@@ -23,7 +35,22 @@ public class EndScript : MonoBehaviour
 
     public void Load()
     {
+        Debug.Log("Load End : " + StockManager.instance != null);
+        StockManager stock = StockManager.instance;
+        if (stock != null)
+        {
+            Cat.interactable = stock.GetAnimalValue("Chat");
+            Dog.interactable = stock.GetAnimalValue("Chien");
+            Pigeon.interactable = stock.GetAnimalValue("Pigeon");
+            Poule.interactable = stock.GetAnimalValue("Poule");
+            Rabbit.interactable = stock.GetAnimalValue("Lapin");
+            Rat.interactable = stock.GetAnimalValue("Rat");
+            Cow.interactable = stock.GetAnimalValue("Vache");
+            Licorne.interactable = stock.GetAnimalValue("Licorne");
+        }
 
+        if (Cow.interactable)
+            Rabbit.GetComponent<Image>().sprite = rabbitAltern;
     }
 
     public void NoAnimals()

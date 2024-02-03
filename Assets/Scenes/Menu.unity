@@ -170,135 +170,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &356929570
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 356929572}
-  - component: {fileID: 356929571}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &356929571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356929570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dbb47e6495b8641b84b1c96002aec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: fightThem
-    clip: {fileID: 8300000, guid: 4c232dbd4573448409c867404e2527ad, type: 3}
-    volume: 0.313
-    loop: 1
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: villageThem
-    clip: {fileID: 8300000, guid: 00b0faf1929d5654b9c9057e760795db, type: 3}
-    volume: 0.28
-    loop: 1
-    playOnAwake: 1
-    source: {fileID: 0}
-  - name: button
-    clip: {fileID: 8300000, guid: e3774d23697454040bcccc18db789bd7, type: 3}
-    volume: 0.267
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: Chat
-    clip: {fileID: 8300000, guid: 08c0686eb5435204184b69837ed23b3a, type: 3}
-    volume: 1
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: Chien
-    clip: {fileID: 8300000, guid: fb58c0db18ffe8f44b8cc4434f40d433, type: 3}
-    volume: 1
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: Lapin
-    clip: {fileID: 8300000, guid: 1b9e835def1f54c419ae1f62ad972985, type: 3}
-    volume: 1
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: Licorne
-    clip: {fileID: 8300000, guid: 8c2f674571ce6864c81147c38d8f3d16, type: 3}
-    volume: 1
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: Pigeon
-    clip: {fileID: 8300000, guid: 218734b1e1a5c2d478a2af954b1fc390, type: 3}
-    volume: 1
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: Poule
-    clip: {fileID: 8300000, guid: f81fb5bdc0c2d324088b58acd482b46b, type: 3}
-    volume: 1
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: Rat
-    clip: {fileID: 8300000, guid: 445a41d3789e99942b9b31196630fa61, type: 3}
-    volume: 1
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: Vache
-    clip: {fileID: 8300000, guid: 9d18466e131ea6241b1d776c8f85dc9a, type: 3}
-    volume: 1
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: fouille
-    clip: {fileID: 8300000, guid: fb74392ae6c2c0949836f6cc8189789d, type: 3}
-    volume: 0.313
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: tampon
-    clip: {fileID: 8300000, guid: 9600d58ef1e66804f940bcba2438ae3c, type: 3}
-    volume: 0.32
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
-  - name: gotcha
-    clip: {fileID: 8300000, guid: 13208ae7a84c5ba44ba69b04ae24475b, type: 3}
-    volume: 0.433
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
---- !u!4 &356929572
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356929570}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &513697060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1090,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355521971}
   m_CullTransparentMesh: 1
+--- !u!1001 &4672696086780063121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505945356355946346, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415452551732416168, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3083833b1d9854479a5e286dd1e3bc5, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1227,4 +1155,4 @@ SceneRoots:
   - {fileID: 1298554068}
   - {fileID: 513697063}
   - {fileID: 151763872}
-  - {fileID: 356929572}
+  - {fileID: 4672696086780063121}

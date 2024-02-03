@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c3da4b3be4c73dc438af61fd83536790
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Homade Trial
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 92af5c60eda3f314794be26d7543b336, type: 3}
+  - {fileID: 12800000, guid: 22cb246a69a9f114eba693f22bbd3d12, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

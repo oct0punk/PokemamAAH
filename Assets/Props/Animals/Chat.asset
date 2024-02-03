@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc431a9fb7d35434e9b87a6e3ff09b84, type: 3}
   m_Name: Chat
   m_EditorClassIdentifier: 
-  type: Chateigneux
+  type: Chataigneux
   id: {fileID: 21300000, guid: f59c4717eaeaeb943a894b0f8af509b7, type: 3}
   neutral: {fileID: 21300000, guid: 3bc379d94dd7dcc489663ddf17a69cba, type: 3}
   hug: {fileID: 21300000, guid: c96270fbe228d534bb5940c8acc1f48c, type: 3}

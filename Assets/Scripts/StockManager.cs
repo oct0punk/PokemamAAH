@@ -5,7 +5,7 @@ using UnityEngine;
 public class StockManager : MonoBehaviour
 {
     public static StockManager instance;
-    public List<AnimalAsset> stock = new List<AnimalAsset>();
+    public Dictionary<AnimalAsset, bool> stock = new Dictionary<AnimalAsset, bool>();
     [HideInInspector] public AnimalAsset shiny;
 
     private void Awake()
@@ -20,8 +20,32 @@ public class StockManager : MonoBehaviour
                 Destroy(gameObject);
     }
 
+    public void AddAnimal(AnimalAsset animal)
+    {
+        if (stock.ContainsKey(animal))
+            stock[animal] = false;                    
+        else
+            stock.Add(animal, false);
+    }
+
     public void Adopt(AnimalAsset asset)
     {
-        stock.Add(asset);
+        if (stock.ContainsKey(asset))
+            stock[asset] = true;
+        else
+            stock.Add(asset, true);
+    }
+
+    public bool GetAnimalValue(string assetName)
+    {
+        foreach (var animal in stock.Keys)
+        {
+            Debug.Log("----------");
+            Debug.Log(animal.name);
+            Debug.Log(assetName);
+            if (animal.name == assetName)
+                return stock[animal];
+        }
+        return false;
     }
 }

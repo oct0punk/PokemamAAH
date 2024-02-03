@@ -1,9 +1,4 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
-using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HidingManager : MonoBehaviour
@@ -11,8 +6,6 @@ public class HidingManager : MonoBehaviour
     public static HidingManager instance;
 
     Hideout[] hides;
-    Vector3 playerPos;
-    float timer = 0;
 
     private void Awake()
     {
@@ -28,30 +21,10 @@ public class HidingManager : MonoBehaviour
 
     private void Start()
     {
-        timer = UnityEngine.Random.Range(3, 10);
         if (GameManager.instance.state == GameState.Street)
             OnLevelWasLoaded(2);
     }
 
-    private void Update()
-    {
-        timer -= Time.deltaTime;
-        if (timer < 0)
-        {
-            timer = UnityEngine.Random.Range(0, 10);
-            
-            Hideout[] emptyHides = Array.FindAll(hides, h => !h.enabled);
-            if (emptyHides.Length > 0)
-            {
-                emptyHides[UnityEngine.Random.Range(0, emptyHides.Length - 1)].SetPresence();
-            }
-        }
-    }
-
-    public void OnStreetQuit()
-    {
-
-    }
 
     private void OnLevelWasLoaded(int level)
     {
@@ -59,39 +32,29 @@ public class HidingManager : MonoBehaviour
         {
             enabled = true;
             hides = FindObjectsOfType<Hideout>();
-            Debug.Log(hides.Length);
 
             if (StockManager.instance != null)
             {
-                if (StockManager.instance.stock.Count >= 8)
+                if (StockManager.instance.stock.Count >= 7)
                 {
                     GameManager.instance.Licorne();
                     return;
                 }
-                foreach (Hideout h in hides)
+                foreach (AnimalAsset asset in StockManager.instance.stock.Keys)
                 {
-                    foreach (AnimalAsset an in h.animals)
+                    foreach (Hideout h in hides)
                     {
-                        if (!StockManager.instance.stock.Contains(an))
-                        {
-                            Debug.Log(h.name + " is active dut to " + an.type);
-                            h.SetPresence();
-                            break;
-                        }
+                        h.RemoveAnimal(asset);
                     }
                 }
+                hides = Array.FindAll(hides, h => h.enabled);
+                if (hides.Length == 0) GameManager.instance.Licorne();
             }
             else
             {
-                GameManager.instance.Licorne();
+                Debug.LogError("No StockManager");
             }
-
-            FindObjectOfType<PlayerController>().transform.position = playerPos;
         }
-        else
-        {
-            enabled = false;
-        }        
     }
 
     public void DisplayText(string text)
