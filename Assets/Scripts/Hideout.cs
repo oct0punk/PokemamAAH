@@ -12,17 +12,18 @@ public class Hideout : MonoBehaviour
 
     private void Start()
     {
-        timer = Random.Range(4, 13);
+        timer = Random.Range(1.0f, 6.0f);
     }
 
     private void Update()
     {
+        if (GameManager.pause) return;
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            timer = Random.Range(4, 13);
+            timer = Random.Range(2, 7);
             GetComponentInChildren<Animator>().SetTrigger("Hit");
-            //AudioManager.instance.Play(gameObject.name);
+            AudioManager.instance.Play(gameObject.name);
         }
     }
 
@@ -43,6 +44,7 @@ public class Hideout : MonoBehaviour
     }
 
     void Rummage() {
+        AudioManager.instance.Play("bump");
         if (enabled)
         {
             StockManager stock = StockManager.instance;
@@ -78,7 +80,8 @@ public class Hideout : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Rummage();
+        if (!GameManager.pause)
+            Rummage();
     }
 
     private void OnMouseEnter()

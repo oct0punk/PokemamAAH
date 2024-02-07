@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EndScript : MonoBehaviour
@@ -31,14 +28,21 @@ public class EndScript : MonoBehaviour
     private void Awake()
     {
         Load();
+        AudioManager.instance.Stop("villageThem");
+        AudioManager.instance.Stop("fightThem");
+        AudioManager.instance.Play("end");
     }
 
     public void Load()
     {
-        Debug.Log("Load End : " + StockManager.instance != null);
         StockManager stock = StockManager.instance;
         if (stock != null)
         {
+            if (!stock.stock.ContainsValue(true)) 
+            {
+                NoAnimals(); 
+                return;
+            }
             Cat.interactable = stock.GetAnimalValue("Chat");
             Dog.interactable = stock.GetAnimalValue("Chien");
             Pigeon.interactable = stock.GetAnimalValue("Pigeon");
@@ -68,6 +72,8 @@ public class EndScript : MonoBehaviour
         Illu.SetActive(false);
         Certificat.SetActive(true);
         photo.sprite = animal.neutral;
+        AudioManager.instance.Stop("end");
+        AudioManager.instance.Play("adoption");
     }
     
     public void DownloadCertificat()

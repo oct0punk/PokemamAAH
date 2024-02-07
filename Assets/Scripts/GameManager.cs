@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameState state;
     public bool last = false;
     [SerializeField] AnimalAsset licorne;
+    public static bool pause;
 
     private void Awake()
     {
@@ -60,7 +59,7 @@ public class GameManager : MonoBehaviour
         StockManager.instance.AddAnimal(animal);
 
         AudioManager.instance.Play("fightThem");
-        AudioManager.instance.Stop("villageThemfightThem");
+        AudioManager.instance.Stop("villageThem");
     }
 
     public void Launch()
@@ -87,15 +86,24 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         AudioManager.instance.Play("villageThem");
         AudioManager.instance.Stop("fightThem");
+        AudioManager.instance.Stop("end");
+        AudioManager.instance.Stop("adoption");
     }
 
     public void End()
     {
         StopAllCoroutines();
-        SceneManager.LoadScene(3);
         AudioManager.instance.Stop("villageThem");
         AudioManager.instance.Stop("fightThem");
-        AudioManager.instance.Play("EndThem");
+        if (!StockManager.instance.stock.ContainsValue(true))
+        {
+            Menu();
+        }
+        else
+        {
+            SceneManager.LoadScene(3);
+            AudioManager.instance.Play("end");
+        }
     }
 
     public void Licorne()
@@ -103,6 +111,20 @@ public class GameManager : MonoBehaviour
         enabled = false;
         last = true;
         Fight(licorne);
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        pause = true;
+        FindObjectOfType<PlayerController>().enabled = false;
+    }
+
+    public void PlayGame()
+    {
+        Time.timeScale = 1;
+        pause = false;
+        FindObjectOfType<PlayerController>().enabled = true;
     }
 }
 

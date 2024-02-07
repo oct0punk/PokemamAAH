@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4415452551732416168}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40dbb47e6495b8641b84b1c96002aec5, type: 3}
   m_Name: 
@@ -47,19 +47,19 @@ MonoBehaviour:
   sounds:
   - name: fightThem
     clip: {fileID: 8300000, guid: 4c232dbd4573448409c867404e2527ad, type: 3}
-    volume: 0.313
+    volume: 0.2
     loop: 1
     playOnAwake: 0
     source: {fileID: 0}
   - name: villageThem
     clip: {fileID: 8300000, guid: 00b0faf1929d5654b9c9057e760795db, type: 3}
-    volume: 0.28
+    volume: 0.4
     loop: 1
     playOnAwake: 1
     source: {fileID: 0}
   - name: button
     clip: {fileID: 8300000, guid: e3774d23697454040bcccc18db789bd7, type: 3}
-    volume: 0.267
+    volume: 0.25
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
@@ -71,37 +71,37 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Chien
     clip: {fileID: 8300000, guid: fb58c0db18ffe8f44b8cc4434f40d433, type: 3}
-    volume: 1
+    volume: 0.3
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: Lapin
     clip: {fileID: 8300000, guid: 1b9e835def1f54c419ae1f62ad972985, type: 3}
-    volume: 1
+    volume: 0.07
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: Licorne
     clip: {fileID: 8300000, guid: 8c2f674571ce6864c81147c38d8f3d16, type: 3}
-    volume: 1
+    volume: 0.3
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: Pigeon
     clip: {fileID: 8300000, guid: 218734b1e1a5c2d478a2af954b1fc390, type: 3}
-    volume: 1
+    volume: 0.2
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: Poule
     clip: {fileID: 8300000, guid: f81fb5bdc0c2d324088b58acd482b46b, type: 3}
-    volume: 1
+    volume: 0.4
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: Rat
     clip: {fileID: 8300000, guid: 445a41d3789e99942b9b31196630fa61, type: 3}
-    volume: 1
+    volume: 0.2
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
@@ -111,21 +111,75 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
-  - name: fouille
-    clip: {fileID: 8300000, guid: fb74392ae6c2c0949836f6cc8189789d, type: 3}
-    volume: 0.313
-    loop: 0
-    playOnAwake: 0
-    source: {fileID: 0}
   - name: tampon
-    clip: {fileID: 8300000, guid: 9600d58ef1e66804f940bcba2438ae3c, type: 3}
-    volume: 0.32
+    clip: {fileID: 8300000, guid: 4af949b46de2884428d5b4a7e40ad4f5, type: 3}
+    volume: 0.2
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: gotcha
     clip: {fileID: 8300000, guid: 13208ae7a84c5ba44ba69b04ae24475b, type: 3}
-    volume: 0.433
+    volume: 0.3
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: bump
+    clip: {fileID: 8300000, guid: 2220aec7c8e297b45b2f742940642994, type: 3}
+    volume: 0.1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Bin
+    clip: {fileID: 8300000, guid: 54767ae159da9a24880cf43d979be3c4, type: 3}
+    volume: 0.2
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Egout
+    clip: {fileID: 8300000, guid: 520626d37b64e4a4fbf9132ad90792b1, type: 3}
+    volume: 0.06
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Buisson
+    clip: {fileID: 8300000, guid: fb74392ae6c2c0949836f6cc8189789d, type: 3}
+    volume: 0.05
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Herbe
+    clip: {fileID: 8300000, guid: 2c2764897ba847249921ffa18f56a97a, type: 3}
+    volume: 0.04
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Vent
+    clip: {fileID: 8300000, guid: aa89d8d4d4f8d734e9f92b83e03d03ee, type: 3}
+    volume: 0.6
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Cartons
+    clip: {fileID: 8300000, guid: 81e9ded39cf09c64cbaa9fc9f00a5b8f, type: 3}
+    volume: 0.4
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: end
+    clip: {fileID: 8300000, guid: 6ad9d59c845d2a9488587e0c96d9da1a, type: 3}
+    volume: 0.4
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: adoption
+    clip: {fileID: 8300000, guid: b5133200e5976ac49b7b274aedc17454, type: 3}
+    volume: 0.2
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: fuite
+    clip: {fileID: 8300000, guid: 6e0ccc3aabdbea2439a2905f21161a00, type: 3}
+    volume: 0.2
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}

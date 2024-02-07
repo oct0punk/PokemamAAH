@@ -1,6 +1,4 @@
 using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -82,6 +80,7 @@ public class FightManager : MonoBehaviour
 
     public void Escape()
     {
+        AudioManager.instance.Stop("fightThem");
         AudioManager.instance.Play("fuite");
         StartCoroutine(EscapeRoutine());
     }    
